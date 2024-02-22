@@ -1,7 +1,7 @@
 #' Get paths to example files
 #'
 #' @description
-#' `marchange.utils-package` comes bundled with several sample files in its inst/extdata directory. This function make them easy to access
+#' `marchange-package` comes bundled with several sample files in its inst/extdata directory. This function make them easy to access
 #'
 #' @param pattern Pattern to select one or more example files. Pattern is vectorized, so more than one value can be supplied. If NULL, all example files are listed.
 #'
