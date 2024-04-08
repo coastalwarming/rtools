@@ -10,15 +10,15 @@ is.envlogger(path)
 \item{path}{A path to a file}
 }
 \value{
-A single numeric value, \code{1} if an Envlogger file, \code{2} if an Envlogger logfile, and \code{0} if none of the two.
+A single numeric value, \code{1} if an EnvLogger file, \code{2} if an EnvLogger logfile, and \code{0} if none of the two.
 }
 \description{
 Check if a path points to an EnvLogger file, logfile or none of the two
 }
 \examples{
-path <- marchange_example("04FD 1700 8A6C 05-20230830 180125")
+path <- R_tools_example("04FD 1700 8A6C 05-20230830 180125")
 is.envlogger(path) # 1
 
-path <- marchange_example("log_")[1]
+path <- R_tools_example("log_")[1]
 is.envlogger(path)   # 2
 }

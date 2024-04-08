@@ -2,16 +2,16 @@
 % Please edit documentation in R/envlogger.R
 \name{read_env_data}
 \alias{read_env_data}
-\title{Read the data in an Envlogger file}
+\title{Read the data from an EnvLogger file}
 \usage{
 read_env_data(path, skip, zero_secs = TRUE, check = TRUE)
 }
 \arguments{
-\item{path}{Path to an Envlogger file}
+\item{path}{Path to an EnvLogger file}
 
 \item{skip}{A numeric value indicating how many rows to skip when reading the target EnvLogger file to skip the header (the \verb{$skip} column of the output from \code{read_env_header()}).}
 
-\item{zero_secs}{Logical, whether to remove trailing seconds (only used if path points to an Envlogger file; adjustment determined based on the first timestamp)}
+\item{zero_secs}{Logical, whether to remove trailing seconds (only used if path points to an EnvLogger file; adjustment determined based on the first timestamp)}
 
 \item{check}{Logical, whether or not to check if path points to an EnvLogger file. Defaults to \code{TRUE}. Only meant to be \code{FALSE} when called from within \code{read_env()}, so as not to repeat the same check multiple times. \strong{Do not set it to \code{FALSE} when running this function directly.}
 #'}
@@ -20,10 +20,10 @@ read_env_data(path, skip, zero_secs = TRUE, check = TRUE)
 A tibble with 2 columns (\code{t} and \code{temp}) header$nrow` rows and 2 columns .
 }
 \description{
-Given a file path, check if it points to an Envlogger file and, if \code{TRUE}, read just the data
+Given a file path, check if it points to an EnvLogger file and, if \code{TRUE}, read just the data
 }
 \examples{
-path <- marchange_example("04FD 1700 8A6C 05-20230830 180125")
+path <- R_tools_example("04FD 1700 8A6C 05-20230830 180125")
 read_env_header(path)
 }
 \seealso{

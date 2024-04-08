@@ -2,26 +2,26 @@
 % Please edit documentation in R/envlogger.R
 \name{read_env}
 \alias{read_env}
-\title{Read an Envlogger file or logfile}
+\title{Read an EnvLogger file or logfile}
 \usage{
 read_env(path, zero_secs = TRUE)
 }
 \arguments{
-\item{path}{Path to an Envlogger file or logfile}
+\item{path}{Path to an EnvLogger file or logfile}
 
-\item{zero_secs}{Logical, whether to remove trailing seconds (only used if path points to an Envlogger file; adjustment determined based on the first timestamp)}
+\item{zero_secs}{Logical, whether to remove trailing seconds (only used if path points to an EnvLogger file; adjustment determined based on the first timestamp)}
 }
 \value{
-If path points to an Envlogger file, a tibble with 1 row and 13 columns, among which \code{id} and \code{data}. If path points to an Envlogger logfile, a tibble with one row for each interaction with an EnvLogger and 15 columns with relevant metadata.
+If path points to an EnvLogger file, a tibble with 1 row and 13 columns, among which \code{id} and \code{data}. If path points to an EnvLogger logfile, a tibble with one row for each interaction with an EnvLogger and 15 columns with relevant metadata.
 }
 \description{
-Given a file path, check if it points to an Envlogger file or logfile and, if \code{TRUE}, read it.
+Given a file path, check if it points to an EnvLogger file or logfile and, if \code{TRUE}, read it.
 }
 \examples{
-path <- marchange_example("04FD 1700 8A6C 05-20230830 180125")
+path <- R_tools_example("04FD 1700 8A6C 05-20230830 180125")
 read_env(path, zero_secs = TRUE) # an EnvLogger file
 
-path <- marchange_example("log_")[1]
+path <- R_tools_example("log_")[1]
 read_env(path) # an EnvLogger logfile
 }
 \seealso{

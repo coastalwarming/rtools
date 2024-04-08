@@ -233,6 +233,25 @@ tides_multiple <- function(x, first_day = Sys.Date(), last_day = Sys.Date() + 7,
   return(x)
 }
 
+x <- tibble::tibble(
+  loc = c(
+    "Diablo",
+    "Loberia"
+  ),
+  lat = c(
+    -34.04459,
+    -41.15483
+  ),
+  lon = c(
+    -53.5366,
+    -63.12806
+  ),
+  tz = c(
+    -3,
+    -3
+  )
+)
+
 #' Get low tide details and stats for several locations
 #'
 #' @inheritParams tides_multiple

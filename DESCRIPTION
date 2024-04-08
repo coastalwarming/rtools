@@ -1,4 +1,4 @@
-Package: marchange.utils
+Package: R_tools
 Type: Package
 Title: Utility Tools for the MarChange Research Team (CIBIO-BIOPOLIS)
 Version: 0.0.0.9000
@@ -6,6 +6,8 @@ Authors@R: c(
     person("Rui", "Seabra", , "ptruimar@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0240-3992")),
     person("Fernando", "Lima", , "fplima@gmail.com", role = c("aut"),
+           comment = c(ORCID = "0000-0000-0000-0000")),
+    person("Rita", "Silva", , "a.ritasilva.15@gmail.com", role = c("aut"),
            comment = c(ORCID = "0000-0000-0000-0000"))
            )
 Description: Utility tools to get tide times and heights from festides2014, to read EnvLogger

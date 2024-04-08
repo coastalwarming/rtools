@@ -67,12 +67,12 @@ if (FALSE) {
 	# gitcreds::gitcreds_set()
 
 	### LINK REPOSITORY RSTUDIO <--> GITHUB (TERMINAL)
-	# echo "# marchange" >> README.md
+	# echo "# marchange_tools" >> README.md
 	# git init
 	# git add README.md
 	# git commit -m "first commit"
 	# git branch -M main
-	# git remote add origin git@github.com:ruiseabra/marchange.git
+	# git remote add origin git@github.com:coastalwarming/R_tools.git
 	# git push -u origin main
 
 	### GENERATE SSH KEY (TERMINAL)
