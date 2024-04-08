@@ -1,7 +1,7 @@
 #' Get paths to example files
 #'
 #' @description
-#' `R_tools-package` comes bundled with several sample files in its inst/extdata directory. This function make them easy to access
+#' `rtools-package` comes bundled with several sample files in its inst/extdata directory. This function make them easy to access
 #'
 #' @param pattern Pattern to select one or more example files. Pattern is vectorized, so more than one value can be supplied. If NULL, all example files are listed.
 #'
@@ -12,25 +12,25 @@
 #'
 #' @examples
 #' # Get the file names of all example files
-#' R_tools_example()
+#' rtools_example()
 #'
 #' # Get the full path to a target example file
-#' R_tools_example("04FD 1700 8A6C 05-20230830 180125")
+#' rtools_example("04FD 1700 8A6C 05-20230830 180125")
 #'
 #' # Get the full paths to any example files matching a search string
-#' R_tools_example("2023-08-30 - uksca")
+#' rtools_example("2023-08-30 - uksca")
 #'
-#' # 'R_tools_example()' is vectorized, meaning that multiple search strings can be used
-#' R_tools_example(c("04E9 6B00 943C 0C", "04CA A900 E31C 0F"))
-R_tools_example <- function(pattern = NULL) {
-  filenames <- dir(system.file("extdata", package = "R_tools"), recursive = TRUE)
+#' # 'rtools_example()' is vectorized, meaning that multiple search strings can be used
+#' rtools_example(c("04E9 6B00 943C 0C", "04CA A900 E31C 0F"))
+rtools_example <- function(pattern = NULL) {
+  filenames <- dir(system.file("extdata", package = "rtools"), recursive = TRUE)
   if (is.null(pattern)) {
     filenames
   } else {
     targets <- pattern %>%
       purrr::map(~stringr::str_subset(filenames, .x)) %>%
       unlist()
-    system.file("extdata", targets, package = "R_tools", mustWork = TRUE)
+    system.file("extdata", targets, package = "rtools", mustWork = TRUE)
   }
 }
 
@@ -44,10 +44,10 @@ R_tools_example <- function(pattern = NULL) {
 #' @export
 #'
 #' @examples
-#' path <- R_tools_example("04FD 1700 8A6C 05-20230830 180125")
+#' path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
 #' is.envlogger(path) # 1
 #'
-#' path <- R_tools_example("log_")[1]
+#' path <- rtools_example("log_")[1]
 #' is.envlogger(path)   # 2
 is.envlogger <- function(path) {
   x <- path %>%
@@ -154,10 +154,10 @@ env_header_val <- function(header, field_pattern, force_numeric = FALSE) {
 #' @seealso [read_env_data()], [read_env()], [plot_env()]
 #'
 #' @examples
-#' path <- R_tools_example("04FD 1700 8A6C 05-20230830 180125")
+#' path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
 #' read_env_header(path)
 #'
-#' paths <- R_tools_example("iemin \\+ iespi")
+#' paths <- rtools_example("iemin \\+ iespi")
 #' paths <- paths[!grepl("log_", paths)]
 #' headers <- purrr::map(paths, read_env_header)
 #' purrr::list_rbind(headers)
@@ -227,7 +227,7 @@ read_env_header <- function(path, check = TRUE) {
 #' @seealso [read_env_header()], [read_env()], [plot_env()]
 #'
 #' @examples
-#' path <- R_tools_example("04FD 1700 8A6C 05-20230830 180125")
+#' path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
 #' read_env_header(path)
 read_env_data <- function(path, skip, zero_secs = TRUE, check = TRUE) {
   if (check) {
@@ -265,7 +265,7 @@ read_env_data <- function(path, skip, zero_secs = TRUE, check = TRUE) {
 #' @seealso [read_env_header()], [read_env_dara()], [read_env()], [plot_env()]
 #'
 #' @examples
-#' path <- R_tools_example("log_")[1]
+#' path <- rtools_example("log_")[1]
 #' read_env_log(path)
 read_env_log <- function(path, check = TRUE) {
   if (check) {
@@ -329,10 +329,10 @@ read_env_log <- function(path, check = TRUE) {
 #' @export
 #'
 #' @examples
-#' path <- R_tools_example("04FD 1700 8A6C 05-20230830 180125")
+#' path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
 #' read_env(path, zero_secs = TRUE) # an EnvLogger file
 #'
-#' path <- R_tools_example("log_")[1]
+#' path <- rtools_example("log_")[1]
 #' read_env(path) # an EnvLogger logfile
 read_env <- function(path, zero_secs = TRUE) {
   env_status <- is.envlogger(path)
@@ -365,7 +365,7 @@ read_env <- function(path, zero_secs = TRUE) {
 #' @export
 #'
 #' @examples
-#' path <- R_tools_example("04FD 1700 8A6C 05-20230830 180125")
+#' path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
 #' env_data <- read_env(path, zero_secs = TRUE)
 #' plot_env(env_data$data[[1]])
 plot_env <- function(env_data) {

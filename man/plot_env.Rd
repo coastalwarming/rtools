@@ -16,7 +16,7 @@ A ggplot
 Plot data from one EnvLogger
 }
 \examples{
-path <- R_tools_example("04FD 1700 8A6C 05-20230830 180125")
+path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
 env_data <- read_env(path, zero_secs = TRUE)
 plot_env(env_data$data[[1]])
 }

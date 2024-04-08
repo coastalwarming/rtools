@@ -19,7 +19,7 @@ A tibble with one row for each interaction with an EnvLogger and 15 columns with
 Given a file path, check if it points to an EnvLogger logfile and, if \code{TRUE}, read it.
 }
 \examples{
-path <- R_tools_example("log_")[1]
+path <- rtools_example("log_")[1]
 read_env_log(path)
 }
 \seealso{

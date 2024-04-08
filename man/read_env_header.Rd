@@ -19,10 +19,10 @@ A tibble with 1 row and 12 columns with the metadata values for most of the fiel
 Given a file path, check if it points to an EnvLogger file and, if \code{TRUE}, read just the header
 }
 \examples{
-path <- R_tools_example("04FD 1700 8A6C 05-20230830 180125")
+path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
 read_env_header(path)
 
-paths <- R_tools_example("iemin \\\\+ iespi")
+paths <- rtools_example("iemin \\\\+ iespi")
 paths <- paths[!grepl("log_", paths)]
 headers <- purrr::map(paths, read_env_header)
 purrr::list_rbind(headers)

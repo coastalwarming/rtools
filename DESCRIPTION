@@ -1,6 +1,6 @@
-Package: R_tools
+Package: rtools
 Type: Package
-Title: Utility Tools for the MarChange Research Team (CIBIO-BIOPOLIS)
+Title: Utility Tools for the CoastalWarming Research Team (CIBIO-BIOPOLIS)
 Version: 0.0.0.9000
 Authors@R: c(
     person("Rui", "Seabra", , "ptruimar@gmail.com", role = c("aut", "cre"),
