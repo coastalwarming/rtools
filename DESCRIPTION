@@ -24,6 +24,7 @@ Imports:
     magrittr,
     purrr,
     readr,
+    Rfes2014,
     stringr,
     suncalc,
     tibbletime,

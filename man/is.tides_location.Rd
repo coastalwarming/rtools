@@ -4,12 +4,14 @@
 \alias{is.tides_location}
 \title{Check if a combination of lat and lon points to a valid FES2014 location}
 \usage{
-is.tides_location(lat, lon)
+is.tides_location(lat, lon, FES_HANDLER)
 }
 \arguments{
 \item{lat}{Latitude (numeric)}
 
 \item{lon}{Longitude (numeric)}
+
+\item{FES_HANDLER}{A file path pointing to "fes2014/ocean_tide.ini" or a fes_handler}
 }
 \value{
 A logical, \code{TRUE} if the location is valid and \code{FALSE} if the location is not
@@ -18,24 +20,29 @@ A logical, \code{TRUE} if the location is valid and \code{FALSE} if the location
 Check if a combination of lat and lon points to a valid FES2014 location
 }
 \examples{
+FES_HANDLER = "/Users/ruiseabra/RS Dropbox/Rui Seabra/RS/bio/datasets/Rfes2014/src/fes2014/data/fes2014/ocean_tide.ini"
+
 # Saint Peter Saint Paul Archipelago, Brazil
 # (valid location)
 is.tides_location(
   lat = 0.917,
-  lon = -29.346
+  lon = -29.346,
+  FES_HANDLER = FES_HANDLER
 )
 
 # Angeiras, Portugal
 # (valid location)
 is.tides_location(
   lat = 41.262,
-  lon = -8.712
+  lon = -8.712,
+  FES_HANDLER = FES_HANDLER
 )
 
 # Angeiras (inland), Portugal
 # (invalid location)
 is.tides_location(
   lat = 41.262,
-  lon = -8.000
+  lon = -8.000,
+  FES_HANDLER = FES_HANDLER
 )
 }

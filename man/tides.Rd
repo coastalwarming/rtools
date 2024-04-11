@@ -11,7 +11,8 @@ tides(
   last_day = Sys.Date() + 7,
   freq_mins = 10,
   tz = 0,
-  mode = "all"
+  mode = "all",
+  FES_HANDLER
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ tides(
 \item{tz}{TZ offset (in hours; defaults to zero, which returns times in UTC0)}
 
 \item{mode}{One of "lo" (low tides), "hi" (high tides), "lohi" or "hilo" (low and high tides) or "all" (tide height every \code{freq_mins}) to indicate which tide elements to output}
+
+\item{FES_HANDLER}{A file path pointing to "fes2014/ocean_tide.ini" or a fes_handler}
 }
 \value{
 A tibble with 4 columns:
@@ -42,13 +45,15 @@ A tibble with 4 columns:
 Get tide heights for any location (all computations in UTC)
 }
 \examples{
+
 # Saint Peter Saint Paul Archipelago
 (t <- tides(
   lat = 0.917,
   lon = -29.346,
   first_day = "2023-10-14",
   last_day  = "2023-10-19",
-  freq_mins = 10
+  freq_mins = 10,
+  FES_HANDLER = "/Users/ruiseabra/RS Dropbox/Rui Seabra/RS/bio/datasets/Rfes2014/src/fes2014/data/fes2014/ocean_tide.ini"
 ))
 plot(t$time, t$h, type = "l")
 
@@ -60,7 +65,8 @@ plot(t$time, t$h, type = "l")
   first_day = Sys.Date(),
   last_day  = Sys.Date() + 7,
   freq_mins = 10,
-  mode = "lo"
+  mode = "lo",
+  FES_HANDLER = "/Users/ruiseabra/RS Dropbox/Rui Seabra/RS/bio/datasets/Rfes2014/src/fes2014/data/fes2014/ocean_tide.ini"
 ))
 
 

@@ -9,7 +9,8 @@ tides_multiple(
   first_day = Sys.Date(),
   last_day = Sys.Date() + 7,
   freq_mins = 10,
-  mode = "all"
+  mode = "all",
+  FES_HANDLER
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ tides_multiple(
 \item{freq_mins}{Get tide heights every x mins (numeric)}
 
 \item{mode}{One of "lo" (low tides), "hi" (high tides), "lohi" or "hilo" (low and high tides) or "all" (tide height every \code{freq_mins}) to indicate which tide elements to output}
+
+\item{FES_HANDLER}{A file path pointing to "fes2014/ocean_tide.ini" or a fes_handler}
 }
 \value{
 A tibble with times and tide heights for each target location
@@ -65,5 +68,5 @@ x <- tibble::tibble(
     )
  )
 
-tides_multiple(x)
+tides_multiple(x, FES_HANDLER = "/Users/ruiseabra/RS Dropbox/Rui Seabra/RS/bio/datasets/Rfes2014/src/fes2014/data/fes2014/ocean_tide.ini")
 }

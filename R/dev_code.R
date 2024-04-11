@@ -45,6 +45,7 @@ if (FALSE) {
 	use_package("stringr")
 	use_package("tibble")
 	use_package("tidyr")
+	use_package("Rfes2014")
 
 	### create and edit a new R file
 	use_r("xxx")

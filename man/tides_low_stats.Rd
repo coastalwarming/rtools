@@ -2,7 +2,7 @@
 % Please edit documentation in R/tides.R
 \name{tides_low_stats}
 \alias{tides_low_stats}
-\title{Get low tide details and stats for several locations}
+\title{Get low tide details and stats for several locations (still being worked)}
 \usage{
 tides_low_stats(x, first_day = Sys.Date(), last_day = Sys.Date() + 7)
 }
@@ -17,5 +17,5 @@ tides_low_stats(x, first_day = Sys.Date(), last_day = Sys.Date() + 7)
 A tibble with the times and heights for the low tides during the target period, headed by tide amplitude stats
 }
 \description{
-Get low tide details and stats for several locations
+Get low tide details and stats for several locations (still being worked)
 }
