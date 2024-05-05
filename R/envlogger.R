@@ -191,7 +191,7 @@ read_env_header <- function(path, check = TRUE) {
 
   header <- tibble::tibble(
     id       = env_header_val(header, "custom name"),
-    serial   = env_header_val(header, "serial number") %>% stringr::str_replace_all(" ", ""),
+    serial   = env_header_val(header, "serial number"),
     nrow     = data_rows_n,
     skip     = skip,
     lat      = env_header_val(header, "lat", TRUE),
@@ -340,7 +340,7 @@ read_env <- function(path, zero_secs = TRUE) {
 
   if (env_status == 1) {
     header <- read_env_header(path, check = FALSE)
-    data <- read_env_data(path, skip = header$skip, zero_secs = zero_secs, check = FALSE)
+    data   <- read_env_data(path, skip = header$skip, zero_secs = zero_secs, check = FALSE)
 
     # tidy
     header$data <- list(data)
