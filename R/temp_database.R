@@ -188,6 +188,7 @@ read_deployment_info <- function(paths, save = TRUE, col_names = FALSE) {
 #' Given a path to a folder from EnvloggerViewer, respective to only one day, reorganize the files into different subfolders by shore name.
 #'
 #' @param path The path to an EnvLoggerViewer daily folder
+#' @param nchar Integer indicating the number of characters to be used to determine the shore name
 #' @param min_size Integer indicating the file size below which report files are rejected into a "check" folder (defaults to 700, which is just a few bytes greater than the size of a report with header but no data)
 #'
 #' @seealso [read_env_log()]
@@ -200,7 +201,7 @@ read_deployment_info <- function(paths, save = TRUE, col_names = FALSE) {
 #' @examples
 #' path <- "~/Library/CloudStorage/GoogleDrive-cctbonproject@gmail.com/My Drive/coastalwarming_29_rui/envlogger/2024-05-12"
 #' subfolders(path)
-subfolders <- function(path, min_size = 700) {
+subfolders <- function(path, nchar = 5, min_size = 700) {
   # create a new folder to hold the reorganized files
   path_new <- stringr::str_c(path, "_sub")
   dir.create(path_new, showWarnings = FALSE)
@@ -211,7 +212,7 @@ subfolders <- function(path, min_size = 700) {
     sh   = purrr::map(path, ~.x %>%
                         read_env_log() %>%
                         dplyr::pull(id) %>%
-                        stringr::str_sub(1, 5) %>%
+                        stringr::str_sub(1, nchar) %>%
                         unique() %>%
                         sort())
   ) %>%
@@ -226,7 +227,7 @@ subfolders <- function(path, min_size = 700) {
                    read_env() %>%
                    dplyr::pull(id)),
     fn_new = dplyr::if_else(is.na(id), basename(path), stringr::str_c(id, "-", basename(path))),
-    sh     = stringr::str_sub(id, 1, 5),
+    sh     = stringr::str_sub(id, 1, nchar),
     size   = file.size(path),
     check  = is.na(id) | size < min_size
   )

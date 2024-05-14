@@ -4,10 +4,12 @@
 \alias{subfolders}
 \title{Rearrange the content of an EnvloggerViewer folder into subfolders}
 \usage{
-subfolders(path, min_size = 700)
+subfolders(path, nchar = 5, min_size = 700)
 }
 \arguments{
 \item{path}{The path to an EnvLoggerViewer daily folder}
+
+\item{nchar}{Integer indicating the number of characters to be used to determine the shore name}
 
 \item{min_size}{Integer indicating the file size below which report files are rejected into a "check" folder (defaults to 700, which is just a few bytes greater than the size of a report with header but no data)}
 }
