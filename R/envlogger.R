@@ -243,7 +243,7 @@ read_env_data <- function(path, skip, zero_secs = TRUE, check = TRUE) {
     tidyr::drop_na() %>%
     dplyr::rename(t = time)
 
-  if (zero_secs) data <- dplyr::mutate(data, t = t - lubridate::second(t[1]))
+  if (zero_secs & nrow(data)) data <- dplyr::mutate(data, t = t - lubridate::second(t[1]))
 
   # return
   return(data)

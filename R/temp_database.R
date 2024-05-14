@@ -182,5 +182,78 @@ read_deployment_info <- function(paths, save = TRUE, col_names = FALSE) {
 }
 
 
+#' Rearrange the content of an EnvloggerViewer folder into subfolders
+#'
+#' @description
+#' Given a path to a folder from EnvloggerViewer, respective to only one day, reorganize the files into different subfolders by shore name.
+#'
+#' @param path The path to an EnvLoggerViewer daily folder
+#' @param min_size Integer indicating the file size below which report files are rejected into a "check" folder (defaults to 700, which is just a few bytes greater than the size of a report with header but no data)
+#'
+#' @seealso [read_env_log()]
+#'
+#' @return
+#' A tibble with one row for each unique serial name and 5 columns with relevant metadata.
+#'
+#' @export
+#'
+#' @examples
+#' path <- "~/Library/CloudStorage/GoogleDrive-cctbonproject@gmail.com/My Drive/coastalwarming_29_rui/envlogger/2024-05-12"
+#' subfolders(path)
+subfolders <- function(path, min_size = 700) {
+  # create a new folder to hold the reorganized files
+  path_new <- stringr::str_c(path, "_sub")
+  dir.create(path_new, showWarnings = FALSE)
 
+  # list the available logfile(s) and determine the shores they correspond to
+  logs <- tibble::tibble(
+    path = dir(path, recursive = TRUE, full.names = TRUE, pattern = "log"),
+    sh   = purrr::map(path, ~.x %>%
+                        read_env_log() %>%
+                        dplyr::pull(id) %>%
+                        stringr::str_sub(1, 5) %>%
+                        unique() %>%
+                        sort())
+  ) %>%
+    tidyr::unnest(sh)
 
+  # list all reports and determine their ids, shore code and file size
+  # then, generate new file names (with id as prefix) and determine if there are files that need to be checked individually (because they lack id or file size is too small [likely without data])
+  reps <- tibble::tibble(
+    path   = dir(path, recursive = TRUE, full.names = TRUE, pattern = ".csv") %>%
+      stringr::str_subset("log_", negate = TRUE),
+    id     = purrr::map_chr(path, ~.x %>%
+                   read_env() %>%
+                   dplyr::pull(id)),
+    fn_new = dplyr::if_else(is.na(id), basename(path), stringr::str_c(id, "-", basename(path))),
+    sh     = stringr::str_sub(id, 1, 5),
+    size   = file.size(path),
+    check  = is.na(id) | size < min_size
+  )
+
+  # for each shore, create a new folder and copy the corresponding files into it (while also renaming the reports to the more complete file name convention)
+  SH <- c(logs$sh, reps$sh) %>% unique() %>% sort()
+
+  for (s in SH) {
+    path_new2 <- file.path(path_new, s, basename(path))
+    dir.create(path_new2, recursive = TRUE, showWarnings = FALSE)
+
+    lo <- dplyr::filter(logs, sh == s)
+    file.copy(lo$path, file.path(path_new2, basename(lo$path)))
+
+    re <- dplyr::filter(reps, sh == s, !check)
+    file.copy(re$path, file.path(path_new2, re$fn_new))
+  }
+
+  # if there are reports that were CHECK == TRUE, move them to a specific folder named "check"
+  re <- dplyr::filter(reps, check)
+  if (nrow(re)) {
+    path_new3 <- file.path(path_new, "check", basename(path))
+    dir.create(path_new3, recursive = TRUE, showWarnings = FALSE)
+
+    lo <- logs$path %>% unique()
+    file.copy(lo, file.path(path_new3, basename(lo)))
+
+    file.copy(re$path, file.path(path_new3, re$fn_new))
+  }
+}
