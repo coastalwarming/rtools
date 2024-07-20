@@ -45,6 +45,7 @@ if (FALSE) {
 	use_package("stringr")
 	use_package("tibble")
 	use_package("tidyr")
+	use_package("terra")
 	use_package("Rfes2014")
 
 	### create and edit a new R file
@@ -52,38 +53,4 @@ if (FALSE) {
 
 	### GENERATE EXAMPLE DATA
 	# run code in "data-raw/pulse_data.R"
-
-	### GENERATE EXAMPLE DATA (OUTDATED)
-	# paths <- fs::path_package("inst", extdata", "limpets", package = "heartbeatr") %>% dir(full.names = TRUE)
-	# paths <- fs::path_package("inst", "extdata", "limpets", package = "heartbeatr") %>% dir(full.names = TRUE, pattern = ".csv", ignore.case = TRUE)
-	# paths <- fs::path_package("inst", "extdata", "limpets", package = "heartbeatr") %>% dir(full.names = TRUE, pattern = ".csv", ignore.case = TRUE) %>% stringr::str_subset("Pulse123", negate = TRUE)
-	# pulse_read(paths[c(7,8)])
-	# data <- pulse_read(folder)
-	# save(data, fs::path_package("inst", "extdata", "limpets", package = "heartbeatr"))
-
-	### CONFIGURE GITHUB USER ON RSTUDIO (R)
-	# use_git_config(user.name = "ruiseabra", user.email = "ruisea@gmail.com")
-	# use_git_config(user.name = "coastalwarming", user.email = "coastalwarming@gmail.com")
-	# usethis::create_github_token()
-	# gitcreds::gitcreds_set()
-
-	### LINK REPOSITORY RSTUDIO <--> GITHUB (TERMINAL)
-	# echo "# marchange_tools" >> README.md
-	# git init
-	# git add README.md
-	# git commit -m "first commit"
-	# git branch -M main
-	# git remote add origin git@github.com:coastalwarming/rtools.git
-	# git push -u origin main
-
-	### GENERATE SSH KEY (TERMINAL)
-	# ssh-keygen
-	#> Generating public/private rsa key pair.
-	#> Enter file in which to save the key (/Users/ruiseabra/.ssh/id_rsa):
-	#>	Enter passphrase (empty for no passphrase): <-- can leave empty
-	#>	Enter same passphrase again: <-- can leave empty
-	#>	Your identification has been saved in /Users/ruiseabra/.ssh/id_rsa
-	#> Your public key has been saved in /Users/ruiseabra/.ssh/id_rsa.pub
-	# cat /Users/ruiseabra/.ssh/id_rsa
-	# cat /Users/ruiseabra/.ssh/id_rsa.pub <-- copy this one and paste on GITHUB (user > settings > SSH and GPG keys > SSH keys)
 }

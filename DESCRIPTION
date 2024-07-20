@@ -27,6 +27,7 @@ Imports:
     Rfes2014,
     stringr,
     suncalc,
+    terra,
     tibbletime,
     tidyr
 RoxygenNote: 7.3.1

@@ -258,3 +258,20 @@ subfolders <- function(path, nchar = 5, min_size = 700) {
     file.copy(re$path, file.path(path_new3, re$fn_new))
   }
 }
+#
+# path <- "~/RS Dropbox/Rui Seabra/RS/bio/datasets/temp_loggers/reports_tidy/_finalized_0.9/arber"
+# check_folders <- function(path) {
+#   sh <- basename(path)
+#
+#   paths <- dir(path, recursive = TRUE, full.names = TRUE)
+#
+#   # is this a shore without any logger data yet (just a logfile)
+#   is.length.1 <- length(paths) == 1
+#   is.all.log  <- all(stringr::str_detect(basename(paths), "^log_"))
+#   if (is.length.1 & !is.all.log) stop(paste0(sh, ": only one file in the folder, but it isn't a logfile"))
+#   if (is.length.1 & is.all.log) {
+#     log <- read_env_log(paths)
+#     message()
+#
+#
+# }
