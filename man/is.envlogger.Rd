@@ -16,7 +16,7 @@ A single numeric value, \code{1} if an EnvLogger file, \code{2} if an EnvLogger 
 Check if a path points to an EnvLogger file, logfile or none of the two
 }
 \examples{
-path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
+path <- rtools_example()[1]
 is.envlogger(path) # 1
 
 path <- rtools_example("log_")[1]

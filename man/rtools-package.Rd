@@ -6,7 +6,7 @@
 \alias{rtools-package}
 \title{rtools: Utility Tools for the CoastalWarming Research Team (CIBIO-BIOPOLIS)}
 \description{
-Utility tools to get tide times and heights from festides2014, to read EnvLogger data and other. New tools added regularly.
+Utility tools to read EnvLogger data and perform other useful tasks. New tools added regularly.
 }
 \author{
 \strong{Maintainer}: Rui Seabra \email{ptruimar@gmail.com} (\href{https://orcid.org/0000-0002-0240-3992}{ORCID})

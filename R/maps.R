@@ -71,7 +71,7 @@ coastline_iberia <- function(mask, sea_pixels = TRUE, water = 0.1, PLOT = TRUE) 
       tibble::tibble() %>%
       dplyr::mutate(cell = terra::cells(coastline_map)) %>%
       dplyr::rename(i = 3) %>%
-      dplyr::arrange(desc(i)) %>%
+      dplyr::arrange(dplyr::desc(i)) %>%
       dplyr::mutate(
         near_zeros = purrr::map_lgl(cell, ~coastline_map %>%
                                       terra::adjacent(.x, directions = "queen") %>%

@@ -15,22 +15,19 @@
 #' rtools_example()
 #'
 #' # Get the full path to a target example file
-#' rtools_example("04FD 1700 8A6C 05-20230830 180125")
+#' rtools_example("04FD_1700_8A6C_05-20230830_180125")
 #'
 #' # Get the full paths to any example files matching a search string
-#' rtools_example("2023-08-30 - uksca")
+#' rtools_example("2023-08-30_uksca")
 #'
 #' # 'rtools_example()' is vectorized, meaning that multiple search strings can be used
-#' rtools_example(c("04E9 6B00 943C 0C", "04CA A900 E31C 0F"))
+#' rtools_example(c("04E9_6B00_943C_0C", "04CA_A900_E31C_0F"))
 rtools_example <- function(pattern = NULL) {
-  filenames <- dir(system.file("extdata", package = "rtools"), recursive = TRUE)
+  filenames <- dir(system.file("extdata", package = "rtools"), recursive = TRUE, full.names = TRUE)
   if (is.null(pattern)) {
     filenames
   } else {
-    targets <- pattern %>%
-      purrr::map(~stringr::str_subset(filenames, .x)) %>%
-      unlist()
-    system.file("extdata", targets, package = "rtools", mustWork = TRUE)
+    unlist(purrr::map(pattern, ~stringr::str_subset(filenames, .x)))
   }
 }
 
@@ -44,7 +41,7 @@ rtools_example <- function(pattern = NULL) {
 #' @export
 #'
 #' @examples
-#' path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
+#' path <- rtools_example()[1]
 #' is.envlogger(path) # 1
 #'
 #' path <- rtools_example("log_")[1]
@@ -107,7 +104,7 @@ is.envlogger <- function(path) {
 #'  full.names = TRUE,
 #'  pattern = ".csv")
 #' paths <- stringr::str_subset(paths, "log_", negate = TRUE)
-#' is.envlogger(path) # 1
+#' is.envlogger(paths) # 1
 is.report_quick <- function(paths, negate = FALSE) {
   val <- purrr::map_lgl(paths, ~readLines(.x, n = 2)[2] == "www.electricblue.eu, Portugal")
   val[is.na(val)] <- FALSE
@@ -154,10 +151,10 @@ env_header_val <- function(header, field_pattern, force_numeric = FALSE) {
 #' @seealso [read_env_data()], [read_env()], [plot_env()]
 #'
 #' @examples
-#' path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
+#' path <- rtools_example()[3]
 #' read_env_header(path)
 #'
-#' paths <- rtools_example("iemin \\+ iespi")
+#' paths <- rtools_example("iemin_iespi")
 #' paths <- paths[!grepl("log_", paths)]
 #' headers <- purrr::map(paths, read_env_header)
 #' purrr::list_rbind(headers)
@@ -227,7 +224,7 @@ read_env_header <- function(path, check = TRUE) {
 #' @seealso [read_env_header()], [read_env()], [plot_env()]
 #'
 #' @examples
-#' path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
+#' path <- rtools_example()[3]
 #' read_env_header(path)
 read_env_data <- function(path, skip, zero_secs = TRUE, check = TRUE) {
   if (check) {
@@ -262,7 +259,7 @@ read_env_data <- function(path, skip, zero_secs = TRUE, check = TRUE) {
 #'
 #' @export
 #'
-#' @seealso [read_env_header()], [read_env_dara()], [read_env()], [plot_env()]
+#' @seealso [read_env_header()], [read_env_data()], [read_env()], [plot_env()]
 #'
 #' @examples
 #' path <- rtools_example("log_")[1]
@@ -329,7 +326,7 @@ read_env_log <- function(path, check = TRUE) {
 #' @export
 #'
 #' @examples
-#' path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
+#' path <- rtools_example()[3]
 #' read_env(path, zero_secs = TRUE) # an EnvLogger file
 #'
 #' path <- rtools_example("log_")[1]
@@ -365,7 +362,7 @@ read_env <- function(path, zero_secs = TRUE) {
 #' @export
 #'
 #' @examples
-#' path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
+#' path <- rtools_example()[3]
 #' env_data <- read_env(path, zero_secs = TRUE)
 #' plot_env(env_data$data[[1]])
 plot_env <- function(env_data) {

@@ -23,7 +23,7 @@ A tibble with 2 columns (\code{t} and \code{temp}) header$nrow` rows and 2 colum
 Given a file path, check if it points to an EnvLogger file and, if \code{TRUE}, read just the data
 }
 \examples{
-path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
+path <- rtools_example()[3]
 read_env_header(path)
 }
 \seealso{

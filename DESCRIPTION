@@ -10,8 +10,7 @@ Authors@R: c(
     person("Rita", "Silva", , "a.ritasilva.15@gmail.com", role = c("aut"),
            comment = c(ORCID = "0000-0000-0000-0000"))
            )
-Description: Utility tools to get tide times and heights from festides2014, to read EnvLogger
-    data and other. New tools added regularly.
+Description: Utility tools to read EnvLogger data and perform other useful tasks. New tools added regularly.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -22,13 +21,13 @@ Imports:
     ggplot2,
     lubridate,
     magrittr,
+    progressr,
     purrr,
     readr,
-    Rfes2014,
     stringr,
     suncalc,
     terra,
-    tibbletime,
+    tibble,
     tidyr
 RoxygenNote: 7.3.1
 Suggests: 

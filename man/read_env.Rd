@@ -18,7 +18,7 @@ If path points to an EnvLogger file, a tibble with 1 row and 13 columns, among w
 Given a file path, check if it points to an EnvLogger file or logfile and, if \code{TRUE}, read it.
 }
 \examples{
-path <- rtools_example("04FD 1700 8A6C 05-20230830 180125")
+path <- rtools_example()[3]
 read_env(path, zero_secs = TRUE) # an EnvLogger file
 
 path <- rtools_example("log_")[1]

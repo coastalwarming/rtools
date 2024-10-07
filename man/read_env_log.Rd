@@ -23,5 +23,5 @@ path <- rtools_example("log_")[1]
 read_env_log(path)
 }
 \seealso{
-\code{\link[=read_env_header]{read_env_header()}}, \code{\link[=read_env_dara]{read_env_dara()}}, \code{\link[=read_env]{read_env()}}, \code{\link[=plot_env]{plot_env()}}
+\code{\link[=read_env_header]{read_env_header()}}, \code{\link[=read_env_data]{read_env_data()}}, \code{\link[=read_env]{read_env()}}, \code{\link[=plot_env]{plot_env()}}
 }

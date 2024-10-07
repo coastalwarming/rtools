@@ -20,11 +20,11 @@ The full path to one or more example files, or the filen ames of all example fil
 rtools_example()
 
 # Get the full path to a target example file
-rtools_example("04FD 1700 8A6C 05-20230830 180125")
+rtools_example("04FD_1700_8A6C_05-20230830_180125")
 
 # Get the full paths to any example files matching a search string
-rtools_example("2023-08-30 - uksca")
+rtools_example("2023-08-30_uksca")
 
 # 'rtools_example()' is vectorized, meaning that multiple search strings can be used
-rtools_example(c("04E9 6B00 943C 0C", "04CA A900 E31C 0F"))
+rtools_example(c("04E9_6B00_943C_0C", "04CA_A900_E31C_0F"))
 }

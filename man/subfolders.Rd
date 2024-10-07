@@ -20,7 +20,7 @@ A tibble with one row for each unique serial name and 5 columns with relevant me
 Given a path to a folder from EnvloggerViewer, respective to only one day, reorganize the files into different subfolders by shore name.
 }
 \examples{
-path <- "~/Library/CloudStorage/GoogleDrive-cctbonproject@gmail.com/My Drive/coastalwarming_29_rui/envlogger/2024-05-12"
+path <- dirname(rtools_example("2023-08-31_ukhol")[1])
 subfolders(path)
 }
 \seealso{

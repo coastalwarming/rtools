@@ -26,5 +26,5 @@ paths <- dir(
  full.names = TRUE,
  pattern = ".csv")
 paths <- stringr::str_subset(paths, "log_", negate = TRUE)
-is.envlogger(path) # 1
+is.envlogger(paths) # 1
 }
